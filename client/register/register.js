@@ -26,7 +26,7 @@ Template.register.events({
                         /***
                          * Hier den Eintrag in die DB machen
                          * **/
-                        $('#error').text("- - - - - - - -");
+                        $('#error').text("success!");
 
                         Benutzer.insert({
                             id : new Date().getTime().toString().substr(4), // this is a hack -> http://stackoverflow.com/questions/15886833/how-can-i-create-an-auto-increment-field-on-meteor

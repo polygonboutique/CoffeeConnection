@@ -12,7 +12,9 @@ Template.login.events({
         console.log(password + " - " + user.id);
 
         if(user.password === password){
-            alert("Hier login code");
+            Session.set("user", user);
+            console.log(Session.get("user"));
+            alert("Session set!");
         }
 
     }

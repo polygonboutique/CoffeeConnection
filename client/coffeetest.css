@@ -38,15 +38,27 @@ html, body {height: 100%; width: 100%}
 }
 
 #logo_text{
-    width: 75%;
-    margin-left: 12.5%;
-    margin-top: 25%;
-    float: left;
-    padding-bottom: 2%;
+    /* center */
+    width: 100%;
+    position: relative;
+    margin: auto auto;
+    top: 50%;
 
     /* font */
     font-size: 40px;
     text-transform: uppercase;
     font-family: Arial;
     text-align: center;
+}
+
+#logo_btn_dwn{
+    bottom: 0;
+    left: 50%;
+    position: absolute;
+    display: block;
+    width: 53px;
+    height: 53px;
+    background-position: -1px -163px;
+    background: url('/img/arrs.png') no-repeat 0 0 transparent;
+    overflow: hidden;
 }

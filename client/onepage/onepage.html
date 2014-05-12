@@ -1,8 +1,8 @@
 <template name="onepage">
-    One Page <br>
+    {{> logo}}
 
-    {{> login}}
-
-    {{> register}}
-
+    {{#if notLoggedIn}}
+        {{> register}}
+        {{> login}}
+    {{/if}}
 </template>

@@ -1,5 +1,5 @@
 Template.logout.rendered = function(){
-    if(Session.get("user") == null){
+    if(AmplifiedSession.get("user") == null){
         $("#logout").remove();
     }
 };
@@ -11,7 +11,7 @@ Template.logout.created = function(){
 Template.logout.events({
     /** Logout code **/
     'click #logout': function (e, tpl) {
-        Session.set("user", null);
+        AmplifiedSession.set("user", null);
         window.location.reload();
     }
 });

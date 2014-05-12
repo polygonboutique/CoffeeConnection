@@ -6,5 +6,6 @@ Meteor.Router.add({
     '/info' : 'info',
     '/profile' : 'profile',
     '/profile/edit' : 'profile_edit',
-    '/userlist' : 'userlist'
+    '/userlist' : 'userlist',
+    '/onepage' : 'onepage'
 });

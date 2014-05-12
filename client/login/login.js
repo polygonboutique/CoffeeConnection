@@ -22,8 +22,8 @@ Template.login.events({
         console.log(password + " - " + user.id);
 
         if(user.password === password){
-            Session.set("user", user);
-            console.log(Session.get("user"));
+            AmplifiedSession.set("user", user);
+            console.log(AmplifiedSession.get("user"));
            // window.location.reload();
         }
 

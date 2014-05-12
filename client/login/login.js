@@ -1,3 +1,13 @@
+Template.login.rendered = function(){
+/*    if(Session.get("user")){
+        $("#login").remove();
+        alert("remove!");
+    }*/
+    console.log(Session.get("user"));
+
+
+};
+
 Template.login.events({
     /** Login code **/
     'click #login': function (e, tpl) {
@@ -14,7 +24,7 @@ Template.login.events({
         if(user.password === password){
             Session.set("user", user);
             console.log(Session.get("user"));
-            alert("Session set!");
+           // window.location.reload();
         }
 
     }

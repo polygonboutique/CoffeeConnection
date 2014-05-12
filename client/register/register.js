@@ -37,6 +37,7 @@ Template.register.events({
                                 gameobject : 0
                             });
 
+                            window.location.reload();
 
                         }else{
                             $('#error').text(register.errorEMailAlreadyExsits());

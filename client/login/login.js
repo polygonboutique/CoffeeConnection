@@ -1,3 +1,9 @@
+Template.login.rendered = function(){
+    if(AmplifiedSession.get("user") != null){
+        $("#login").remove();
+    }
+};
+
 Template.login.events({
     /** Login code **/
     'click #login': function (e, tpl) {
@@ -12,9 +18,9 @@ Template.login.events({
         console.log(password + " - " + user.id);
 
         if(user.password === password){
-            Session.set("user", user);
-            console.log(Session.get("user"));
-            alert("Session set!");
+            AmplifiedSession.set("user", user);
+            console.log(AmplifiedSession.get("user"));
+            window.location.reload();
         }
 
     }

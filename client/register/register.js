@@ -1,7 +1,7 @@
 
 Template.register.events({
     'click #register': function (e, tpl) {
-        if(Session.get("user") == null){
+        if(AmplifiedSession.get("user") == null){
             var username = tpl.find('#username').value;
             var email = tpl.find('#email').value;
             var password = tpl.find('#password').value;
@@ -37,6 +37,7 @@ Template.register.events({
                                 gameobject : 0
                             });
 
+                            window.location.reload();
 
                         }else{
                             $('#error').text(register.errorEMailAlreadyExsits());
@@ -54,7 +55,7 @@ Template.register.events({
             }
         }else{
             $('#error').text(function(){
-                console.log(Session.get("user"));
+                console.log(AmplifiedSession.get("user"));
                 return "You are already logged in !";
             });
         }

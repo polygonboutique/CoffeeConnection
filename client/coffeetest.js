@@ -5,5 +5,7 @@ Meteor.Router.add({
     '/register' : 'register',
     '/info' : 'info',
     '/profile' : 'profile',
-    '/profile/edit' : 'profile_edit'
+    '/profile/edit' : 'profile_edit',
+    '/userlist' : 'userlist',
+    '/onepage' : 'onepage'
 });

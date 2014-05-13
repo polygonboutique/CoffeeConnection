@@ -1,0 +1,8 @@
+<template name="onepage">
+    {{> logo}}
+
+    {{#if notLoggedIn}}
+        {{> register}}
+        {{> login}}
+    {{/if}}
+</template>

@@ -2,10 +2,10 @@ Template.login.rendered = function(){
     if(AmplifiedSession.get("user") != null){
         $("#login").remove();
     }
+};
 
-    var test = this.find('div[name="main"]');
-    pageList.list.addPage("#tpl_login");
-    console.log(test);
+Template.login.created = function(){
+    pageList.addPage("#tpl_login");
 };
 
 Template.login.events({

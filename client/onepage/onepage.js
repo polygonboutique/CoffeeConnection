@@ -1,5 +1,6 @@
 Template.onepage.rendered = function(){
-   // pageList.addPage('#tpl_onepage');
+    var list = pageList.list; // pagelist ready
+    console.log(pageList.list);
 };
 
 Template.onepage.isLoggedIn = function () {

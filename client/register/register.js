@@ -1,3 +1,6 @@
+Template.register.created = function(){
+    pageList.addPage('#tpl_register');
+};
 
 Template.register.events({
     'click #register': function (e, tpl) {

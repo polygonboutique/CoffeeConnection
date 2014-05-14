@@ -4,7 +4,7 @@ Template.login.rendered = function(){
     }
 
     var test = this.find('div[name="main"]');
-    //('#tpl_login')
+    pageList.list.addPage("#tpl_login");
     console.log(test);
 };
 

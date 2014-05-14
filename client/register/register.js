@@ -34,7 +34,7 @@ Template.register.events({
                             /***
                              * Hier den Eintrag in die DB machen
                              * **/
-                            $('#error').text("success!");
+                            $('#register_error').text("success!");
 
                             Benutzer.insert({
                                 id : new Date().getTime().toString().substr(4), // this is a hack -> http://stackoverflow.com/questions/15886833/how-can-i-create-an-auto-increment-field-on-meteor
@@ -47,21 +47,21 @@ Template.register.events({
                             window.location.reload();
 
                         }else{
-                            $('#error').text(register.errorEMailAlreadyExsits());
+                            $('#register_error').text(register.errorEMailAlreadyExsits());
                         }
                     }else{
-                        $('#error').text(register.errorUserAlreadyExsits());
+                        $('#register_error').text(register.errorUserAlreadyExsits());
                     }
 
                 }else{
-                    $('#error').text(register.errorPasswordsDoNotMatch());
+                    $('#register_error').text(register.errorPasswordsDoNotMatch());
                 }
 
             }else{
-                $('#error').text(register.errorDataIncomplete());
+                $('#register_error').text(register.errorDataIncomplete());
             }
         }else{
-            $('#error').text(function(){
+            $('#register_error').text(function(){
                 console.log(AmplifiedSession.get("user"));
                 return "You are already logged in !";
             });

@@ -19,17 +19,47 @@ Template.login.events({
         var email = tpl.find('#login_email').value;
         var password = tpl.find('#login_password').value;
 
-        var user = Benutzer.find({"email" : email}).fetch();
-        user = user[0];
+        var login = new Login();
 
-        console.log(user);
-        console.log(password + " - " + user.id);
+        if((email.length + password.length) <= 0){
+            $('#login_error').text(login.errorDataIncomplete());
+        }else{
+            var user = Benutzer.find({"email" : email}).fetch();
+            user = user[0];
 
-        if(user.password === password){
-            AmplifiedSession.set("user", user);
-            console.log(AmplifiedSession.get("user"));
-            window.location.reload();
+            if('undefined' !== typeof user){
+                if(user.password === password){
+                    AmplifiedSession.set("user", user);
+                    console.log(AmplifiedSession.get("user"));
+                    window.location.reload();
+                }else{
+                    $('#login_error').text(login.errorPasswordsDoNotMatch());
+                }
+            }else{
+                $('#login_error').text(login.errorEmailNotFound());
+            }
         }
-
     }
 });
+
+/**
+ * Klasse für Fehlermeldungen
+ * **/
+
+var Login = function(){};
+
+Login.prototype.displayError = function(){
+    return "Error";
+};
+
+Login.prototype.errorDataIncomplete = function(){
+    return "es wurden nicht alle felder ausgefüllt!";
+};
+
+Login.prototype.errorEmailNotFound = function(){
+    return "email existiert nicht!";
+};
+
+Login.prototype.errorPasswordsDoNotMatch = function(){
+    return "passwörter stimmen nicht überein!";
+};

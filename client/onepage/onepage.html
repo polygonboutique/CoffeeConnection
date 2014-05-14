@@ -4,5 +4,8 @@
     {{#if notLoggedIn}}
         {{> register}}
         {{> login}}
+    {{else}}
+        {{> userStats}}
+        {{> userFields}}
     {{/if}}
 </template>

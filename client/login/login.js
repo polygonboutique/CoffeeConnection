@@ -2,6 +2,9 @@ Template.login.rendered = function(){
     if(AmplifiedSession.get("user") != null){
         $("#login").remove();
     }
+
+    //this.find(div[name="tpl_login_name"])
+    pageList().addPage("#tpl_login");
 };
 
 Template.login.events({

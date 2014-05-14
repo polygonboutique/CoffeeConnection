@@ -1,0 +1,13 @@
+<template name="userStats">
+
+    <div id="tpl_userStats">
+        {{#each showProfile}} <!-- each: um auf die felder des jsons zugreifen zukönnen. -->
+            {{name}}: {{id}} <br>
+            {{gameobject}} <!-- wird in zukunft ein json sein... -->
+        {{/each}}
+        Test <br>
+
+        {{showProfileYo.id}}
+    </div>
+
+</template>

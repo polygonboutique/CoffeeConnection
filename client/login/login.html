@@ -1,12 +1,12 @@
 <template name="login">
+    <a href="#" onclick="$('#tpl_logo').goTo()"><div id="arr_btn_up"></div></a>
     <div id="tpl_login">
-        <a href="#" onclick="$('#tpl_logo').goTo()"><div id="login_btn_up"></div></a>
         <div id="login_box">
             <div id="login_box_content">
                 <input type="text" id="email" name="email" placeholder="E-Mail address"> <br>
                 <input type="password" id="password" name="password" placeholder="Password"> <br>
                 <input type="submit" name="submit" value="Login" id="login">
-                <input type="submit" name="submit" value="Register" id="register">
+                <input type="button" name="button" value="Register" id="register" onclick="$('#tpl_register').goTo()">
             </div>
         </div>
     </div>

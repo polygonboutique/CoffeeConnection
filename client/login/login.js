@@ -3,8 +3,9 @@ Template.login.rendered = function(){
         $("#login").remove();
     }
 
-    //this.find(div[name="tpl_login_name"])
-    pageList().addPage("#tpl_login");
+    var test = this.find('div[name="main"]');
+    //('#tpl_login')
+    console.log(test);
 };
 
 Template.login.events({

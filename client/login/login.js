@@ -1,3 +1,7 @@
+/**
+ * author: Sergej.
+ */
+
 Template.login.rendered = function(){
     if(AmplifiedSession.get("user") != null){
         $("#login").remove();

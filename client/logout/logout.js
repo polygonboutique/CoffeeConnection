@@ -1,3 +1,6 @@
+/**
+* author: Sergej.
+**/
 Template.logout.rendered = function(){
     if(AmplifiedSession.get("user") == null){
         $("#logout").remove();

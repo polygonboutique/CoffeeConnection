@@ -14,7 +14,7 @@ PageListing.prototype.addPage = function(page)
 
 PageListing.prototype.resetPageList = function()
 {
-    this.list = [];
+    PageListing.prototype.list = [];
 };
 
 pageList = new PageListing();

@@ -1,3 +1,6 @@
+/**
+ * author: Sergej.
+ * */
 if (Meteor.isClient) {
 
     AmplifiedSession = _.extend({}, Session, {

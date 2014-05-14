@@ -1,3 +1,7 @@
+/**
+* author: Sergej.
+**/
+
 /*Database = new function(){
     this.Users = new Meteor.Collection('users');
 };*/

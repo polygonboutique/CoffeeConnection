@@ -1,3 +1,6 @@
+/**
+* author: Sergej.
+**/
 Template.userStats.showProfile = function () {
     return [AmplifiedSession.get("user")];
 };

@@ -1,3 +1,6 @@
+/**
+* author: Sergej.
+**/
 Template.userlist.events({
     /** Logout code **/
     'click #ID': function (e, tpl) {}

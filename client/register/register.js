@@ -1,3 +1,7 @@
+/**
+* author: Sergej.
+**/
+
 Template.register.created = function(){
     pageList.addPage('#tpl_register');
 };

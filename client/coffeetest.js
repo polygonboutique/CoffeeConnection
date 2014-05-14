@@ -1,3 +1,6 @@
+/**
+* author: Sergej.
+**/
 Meteor.Router.add({
     '/': 'home',
     '/login' : 'login',

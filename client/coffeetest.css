@@ -112,8 +112,7 @@ html, body {height: 100%; width: 100%}
     display: block;
     width: 53px;
     height: 53px;
-    background-position: -1px -163px;
-    background: url('/img/arrs.png') no-repeat 0 0 transparent;
+    background: url('/img/arrs.png') no-repeat -1px -163px transparent;
     overflow: hidden;
 }
 
@@ -125,7 +124,6 @@ html, body {height: 100%; width: 100%}
     display: block;
     width: 53px;
     height: 53px;
-    background-position: -1px -163px;
-    background: url('/img/arrs.png') no-repeat 0 0 transparent;
+    background: url('/img/arrs.png') no-repeat -55px -110px transparent;
     overflow: hidden;
 }

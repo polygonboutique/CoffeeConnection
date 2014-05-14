@@ -7,12 +7,12 @@ Template.register.created = function(){
 };
 
 Template.register.events({
-    'click #register': function (e, tpl) {
+    'click #register_register': function (e, tpl) {
         if(AmplifiedSession.get("user") == null){
-            var username = tpl.find('#username').value;
-            var email = tpl.find('#email').value;
-            var password = tpl.find('#password').value;
-            var repeatPassword = tpl.find('#repeatpassword').value;
+            var username = tpl.find('#register_username').value;
+            var email = tpl.find('#register_email').value;
+            var password = tpl.find('#register_password').value;
+            var repeatPassword = tpl.find('#register_repeatpassword').value;
 
             var register = new Register();
 

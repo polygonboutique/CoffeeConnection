@@ -19,7 +19,7 @@ Benutzer = new Meteor.Collection('benutzer');
  * name: ,
  * email: ,
  * password: ,
- * gameobject: ,
+ * gameobject: , <-- {}
  * **/
 
 if(Meteor.isServer) {

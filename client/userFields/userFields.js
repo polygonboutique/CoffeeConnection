@@ -1,3 +1,3 @@
-/**
- * Created by Thomas on 13.05.14.
- */
+Template.userFields.created = function(){
+    pageList.addPage('#tpl_userFields');
+};

@@ -9,3 +9,7 @@ Template.userlist.events({
 Template.userlist.user = function () {
     return Benutzer.find({});
 };
+
+Template.userlist.created = function(){
+    pageList.addPage('#tpl_userList');
+};

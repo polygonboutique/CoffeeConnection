@@ -2,8 +2,10 @@
 * author: Sergej.
 -->
 <template name="userlist">
-    <div> Userliste <br></div>
-    {{#each user}}
-        {{name}}: {{id}} <br>
-    {{/each}}
+    <div id="tpl_userList">
+        Userliste <br>
+        {{#each user}}
+            {{name}}: {{id}} <br>
+        {{/each}}
+    </div>
 </template>

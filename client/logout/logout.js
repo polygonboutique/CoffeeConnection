@@ -18,3 +18,7 @@ Template.logout.events({
         window.location.reload();
     }
 });
+
+Template.logout.created = function(){
+    pageList.addPage('#tpl_logout');
+};

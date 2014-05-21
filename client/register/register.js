@@ -13,6 +13,7 @@ Template.register.events({
             var email = tpl.find('#register_email').value;
             var password = tpl.find('#register_password').value;
             var repeatPassword = tpl.find('#register_repeatpassword').value;
+            var userType = tpl.find('#register_type').value;
 
             var register = new Register();
 
@@ -41,7 +42,9 @@ Template.register.events({
                                 name : username,
                                 email : email,
                                 password : password,
-                                gameobject : 0
+                                gameobject : {
+                                    type : userType
+                                }
                             });
 
                             window.location.reload();

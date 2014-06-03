@@ -5,6 +5,7 @@
 Template.onepage.rendered = function(){
     var list = pageList.list; // pagelist ready
     console.log(pageList.list);
+    checkPositionAndScroll('none');
 };
 
 Template.onepage.isLoggedIn = function () {

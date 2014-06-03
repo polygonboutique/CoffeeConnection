@@ -43,7 +43,8 @@ Template.register.events({
                                 email : email,
                                 password : password,
                                 gameobject : {
-                                    type : userType
+                                    type : userType,
+                                    fields : []
                                 }
                             });
 

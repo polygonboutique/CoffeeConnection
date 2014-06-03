@@ -17,6 +17,8 @@ Template.gameContent.rendered = function(){
     var gameObject = AmplifiedSession.get("user").gameobject;
     var userType = gameObject.type;
 
+    console.log(gameObject);
+
     if(userType == 0){
         /** user ist farmer **/
 

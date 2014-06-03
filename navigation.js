@@ -66,12 +66,57 @@ checkPositionAndScroll = function(button){
         }
     }else if(button == 'none'){
         //check only buttons!
+
+        console.log($(list[list.length - 1]).position().top);
+
+        if($(window).scrollTop() == 0){
+            $("#main_arrow_up").hide();
+        }else if($(window).scrollTop() >= $(list[list.length - 1]).position().top){
+            $("#main_arrow_down").hide();
+        }
     }
 
     // scroll to
     console.log("scroll to element : " + scrollToElement);
     $(scrollToElement).goTo();
 
-    /** buttons an & aus machen! **/
-
   }
+
+checkPosition = function(direction){
+    var list = pageList.list;
+    var currentPosition =  $(window).scrollTop();
+
+    if(direction == 'down'){
+        for(var i = 0; i < list.length; i++){
+            var elementPosition = $(list[i]).position().top + ($(list[i]).height() / 2);
+            if(elementPosition >= currentPosition){
+                if(i + 1 >= list.length){
+                    $("#main_arrow_down").hide();
+                }else{
+                    $("#main_arrow_up").show();
+                }
+                break;
+            }
+        }
+    }else if(direction == 'up'){
+        for(var i = 0; i < list.length; i++){
+            var j = Math.abs((i - list.length) + 1); // weil javascript komisch ist
+            var elementPosition = $(list[j]).position().top - ($(list[j]).height() / 2);
+
+            if(elementPosition <= currentPosition){
+                if(j <= 0){
+                    $("#main_arrow_up").hide();
+                }else{
+                    $("#main_arrow_down").show();
+                }
+                break;
+            }
+        }
+    }
+
+    if($(window).scrollTop() == 0){
+        $("#main_arrow_up").hide();
+    }else if($(window).scrollTop() >= $(list[list.length - 1]).position().top){
+        $("#main_arrow_down").hide();
+    }
+}

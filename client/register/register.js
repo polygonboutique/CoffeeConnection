@@ -1,5 +1,32 @@
 /**
 * author: Sergej.
+ *
+ * User DB Layout:
+ *
+ *
+ * user : {
+ *     name : "",
+ *     pw : "",
+ *     email : "",
+ *     id : "",
+ *     gameobject : {
+ *         money : "",
+ *         coffee : "",
+ *         type : "",
+ *         fields : [
+ *              {
+ *                  status : "",
+ *                  type : {
+ *                      ertrag : "",
+ *                      dauer_bis_ertrag : "",
+ *                      cost : ""
+ *                  }
+ *              }
+ *         ]
+ *     }
+ * }
+ *
+ *
 **/
 
 Template.register.created = function(){
@@ -44,23 +71,153 @@ Template.register.events({
                                 password : password,
                                 gameobject : {
                                     type : userType,
+                                    money : 0,
+                                    coffee: 0,
                                     fields : [
-                                        {id : 0},
-                                        {id : 1},
-                                        {id : 2},
-                                        {id : 3},
-                                        {id : 4},
-                                        {id : 5},
-                                        {id : 6},
-                                        {id : 7},
-                                        {id : 8},
-                                        {id : 9},
-                                        {id : 10},
-                                        {id : 11},
-                                        {id : 12},
-                                        {id : 13},
-                                        {id : 14},
-                                        {id : 15}
+                                        {
+                                            id : 0,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 1,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 2,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 3,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 4,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 5,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 6,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 7,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 8,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 9,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 10,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 11,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 12,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 13,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 14,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        },
+                                        {
+                                            id : 15,
+                                            status : 0,
+                                            type : {
+                                                harvest : 0,
+                                                time : 0,
+                                                cost : 0
+                                            }
+                                        }
                                     ]
                                 }
                             });

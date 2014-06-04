@@ -28,5 +28,30 @@ Template.gameContent.logic = function () {
         console.log(user);
         console.log(user.gameobject);
         console.log("-------");
+
+
+        var gameObject = user.gameobject;
+        var userType = gameObject.type;
+
+        if(userType == 0){ // farmer
+
+            $('#game').append('<h1>Farmer</h1>');
+
+            for(var i = 0; i < gameObject.fields.length; i++){
+                var field = gameObject.fields[i];
+
+
+                console.log(field);
+
+
+                console.log(field.id + " & " + field.status);
+
+                /** change value **/
+                //Benutzer.update(user._id, {$addToSet : {gameobject: {status : "EMPTY"}}});
+                //field.status = "EMPTY";
+            }
+
+        }
+
     }
 };

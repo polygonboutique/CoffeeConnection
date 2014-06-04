@@ -33,9 +33,12 @@ Template.gameContent.logic = function () {
         var gameObject = user.gameobject;
         var userType = gameObject.type;
 
+        console.log(userType);
+
         if(userType == 0){ // farmer
 
             $('#game').append('<h1>Farmer</h1>');
+            $('#game').append('<h1>MONIEEEES: ' + gameObject.money +  '</h1>');
 
             for(var i = 0; i < gameObject.fields.length; i++){
                 var field = gameObject.fields[i];
@@ -47,11 +50,14 @@ Template.gameContent.logic = function () {
                 console.log(field.id + " & " + field.status);
 
                 /** change value **/
-                //Benutzer.update(user._id, {$addToSet : {gameobject: {status : "EMPTY"}}});
-                //field.status = "EMPTY";
+                // Polls.update({ _id: id },{ $push: { already_voted: ip })
+
             }
 
         }
+
+        /** replace the gameobject of the user in the database **/
+        Benutzer.update(user._id, {$set: { gameobject: gameObject } });
 
     }
 };

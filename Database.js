@@ -30,6 +30,9 @@ if(Meteor.isServer) {
             console.log("in der insert function");
 
             return true;
+        },
+        'update' : function (userId, doc, fieldNames, modifier){
+            return true;
         }
     });
 }

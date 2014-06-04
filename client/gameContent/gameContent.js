@@ -7,34 +7,26 @@ Template.gameContent.created = function(){
 };
 
 Template.gameContent.rendered = function(){
-
-    /**
-     * hier wird aus der datenbank gelesen, ob der user ein 'farmer' oder ein
-     * 'röster' ist
-     *  **/
-
-
-    var gameObject = AmplifiedSession.get("user").gameobject;
-    var userType = gameObject.type;
-
-    console.log(gameObject);
-
-    if(userType == 0){
-        /** user ist farmer **/
-
-            // 1. Alle Felder anzeigen
-            // 2. Eigenschaften der Felder darstellen
-
-        $('#game').append("<h1>FARMER</h1>");
-
-    }else if(userType == 1){
-        /** user ist röster **/
-        for(var i = 0; i < 20; i++){
-            $('#game').append('<h1>RÖSTER</h1>');
-        }
-    }
 };
 
 Template.gameContent.events({
 
 });
+
+Template.gameContent.logic = function () {
+    var userMail = AmplifiedSession.get("user").email;
+    var user = Benutzer.find({"email" : userMail}).fetch();
+    user = user[0];
+
+    if('undefined' !== typeof user){
+
+        /*    // user2 -> ist der richtige
+         var user2 = Benutzer.find({"email" : userMail}).fetch();
+         user2 = user2[0];*/
+
+        console.log("-------");
+        console.log(user);
+        console.log(user.gameobject);
+        console.log("-------");
+    }
+};

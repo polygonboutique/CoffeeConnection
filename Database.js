@@ -7,6 +7,7 @@
 };*/
 
 Benutzer = new Meteor.Collection('benutzer');
+
 //Benutzer.remove({});
 
 

@@ -16,24 +16,14 @@ Template.gameContent.events({
 Template.gameContent.logic = function () {
     var userMail = AmplifiedSession.get("user").email;
     var user = Benutzer.find({"email" : userMail}).fetch();
-    user = user[0];
+    user = user[0]; // weil die datenbank ein array rausgibt & wir nur das erste element brauchen
 
     if('undefined' !== typeof user){
 
-        /*    // user2 -> ist der richtige
-         var user2 = Benutzer.find({"email" : userMail}).fetch();
-         user2 = user2[0];*/
-
-        console.log("-------");
         console.log(user);
-        console.log(user.gameobject);
-        console.log("-------");
-
 
         var gameObject = user.gameobject;
         var userType = gameObject.type;
-
-        console.log(userType);
 
         if(userType == 0){ // farmer
 
@@ -43,21 +33,18 @@ Template.gameContent.logic = function () {
             for(var i = 0; i < gameObject.fields.length; i++){
                 var field = gameObject.fields[i];
 
-
+                /** hier die einzelnen felder an das 'game'-div attachen **/
                 console.log(field);
 
-
-                console.log(field.id + " & " + field.status);
-
-                /** change value **/
-                // Polls.update({ _id: id },{ $push: { already_voted: ip })
-
+                $('#game').append('<div id="game_feld" fieldID="'+ i +'">Hello</div>');
+                var addedField = $("#game_feld[fieldID='"+i+"']");
+                addedField.css('height', addedField.width());
             }
+        }else if(userType == 1){ // röster
 
         }
 
         /** replace the gameobject of the user in the database **/
         Benutzer.update(user._id, {$set: { gameobject: gameObject } });
-
     }
 };

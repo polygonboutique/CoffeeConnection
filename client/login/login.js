@@ -22,7 +22,8 @@ Template.login.events({
         var login = new Login();
 
         if((email.length + password.length) <= 0){
-            $('#login_error').text(login.errorDataIncomplete());
+            $('#login_error').html(login.errorDataIncomplete());
+            $('#login_error').addClass('alert alert-danger');
         }else{
             var user = Benutzer.find({"email" : email}).fetch();
             user = user[0];
@@ -33,11 +34,12 @@ Template.login.events({
                     console.log(AmplifiedSession.get("user"));
                     window.location.reload();
                 }else{
-                    $('#login_error').text(login.errorPasswordsDoNotMatch());
+                    $('#login_error').html(login.errorPasswordsDoNotMatch());
                     $('#login_error').addClass('alert alert-danger');
                 }
             }else{
-                $('#login_error').text(login.errorEmailNotFound());
+                $('#login_error').html(login.errorEmailNotFound());
+                $('#login_error').addClass('alert alert-danger');
             }
         }
     }
@@ -54,13 +56,13 @@ Login.prototype.displayError = function(){
 };
 
 Login.prototype.errorDataIncomplete = function(){
-    return "es wurden nicht alle felder ausgefüllt!";
+    return "<b>Dare you!</b> Please fill out all fields.";
 };
 
 Login.prototype.errorEmailNotFound = function(){
-    return "email existiert nicht!";
+    return "<b>Fail!</b> The Email was not found.";
 };
 
 Login.prototype.errorPasswordsDoNotMatch = function(){
-    return "passwörter stimmen nicht überein!";
+    return "<b>Password does not match!</b> Please try again.";
 };

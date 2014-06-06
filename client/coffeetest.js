@@ -10,5 +10,6 @@ Meteor.Router.add({
     '/profile' : 'profile',
     '/profile/edit' : 'profile_edit',
     '/userlist' : 'userlist',
-    '/onepage' : 'onepage'
+    '/onepage' : 'onepage',
+    '/gameContent' : 'gameContent'
 });

@@ -7,6 +7,8 @@ Template.gameContent.created = function(){
 };
 
 Template.gameContent.rendered = function(){
+    console.log("Gamecontent Template height: " + $('#tpl_gameContent').height());
+    // $('#tpl_gameContent').css('height', $('#tpl_gameContent').height());
 };
 
 Template.gameContent.events({
@@ -36,10 +38,23 @@ Template.gameContent.logic = function () {
                 /** hier die einzelnen felder an das 'game'-div attachen **/
                 console.log(field);
 
-                $('#game').append('<div id="game_feld" fieldID="'+ i +'">Hello</div>');
+                $('#game').append('<div id="game_feld" fieldID="'+ i +'" onclick="stepGame()" ></div>');
                 var addedField = $("#game_feld[fieldID='"+i+"']");
                 addedField.css('height', addedField.width());
+
+                if(i % 4 == 0) {
+                    addedField.css('margin-left', '12.5%');
+                    addedField.css('clear', 'both');
+                }
             }
+            $('#game').append('<div id="game_panel"></div>');
+
+            //var harvest = "'harvest'";
+            $('#game_panel').append('<div class="game_panel_icon" onclick="changeCurrentAction('+"'harvest'"+')">Harvest</div>');
+            $('#game_panel').append('<div class="game_panel_icon" onclick="changeCurrentAction('+"'plant'"+')">Plant</div>');
+            $('#game_panel').append('<div class="game_panel_icon" onclick="changeCurrentAction('+"'other'"+')">Other</div>');
+
+
         }else if(userType == 1){ // röster
 
         }
@@ -47,4 +62,27 @@ Template.gameContent.logic = function () {
         /** replace the gameobject of the user in the database **/
         Benutzer.update(user._id, {$set: { gameobject: gameObject } });
     }
+};
+
+/**
+ * Game
+ * **/
+
+
+/**
+ * Actions = { plant, harvest }
+ * **/
+
+//global
+currentAction = "harvest";
+
+stepGame = function(){
+    if(currentAction == "harvest"){
+        alert(currentAction);
+    }
+};
+
+changeCurrentAction = function(action){
+    currentAction = action;
+    alert(currentAction);
 };

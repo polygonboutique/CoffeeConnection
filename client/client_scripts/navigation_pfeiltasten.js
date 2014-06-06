@@ -1,7 +1,9 @@
 $(document).keydown(function(event) {
     if(event.keyCode == 40){
+        event.preventDefault();
         checkPositionAndScroll('down');
     }else if(event.keyCode == 38){
+        event.preventDefault();
         checkPositionAndScroll('up');
     }
 });

@@ -4,13 +4,89 @@
 <template name="userStats">
 
     <div name="tpl_userStats_name" id="tpl_userStats">
-        {{#each showProfile}} <!-- each: um auf die felder des jsons zugreifen zukönnen. -->
-            {{name}}: {{id}} <br>
-            {{gameobject}} <!-- wird in zukunft ein json sein... -->
-        {{/each}}
-        Test <br>
+        <!--{{#each showProfile}} &lt;!&ndash; each: um auf die felder des jsons zugreifen zukönnen. &ndash;&gt;-->
+            <!--{{name}}: {{id}} <br>-->
+            <!--{{gameobject}} &lt;!&ndash; wird in zukunft ein json sein... &ndash;&gt;-->
+        <!--{{/each}}-->
+        <!--Test <br>-->
 
-        {{showProfileYo.id}}
+        <!--{{showProfileYo.id}}-->
+
+        <div class="row" style="margin: 15px; min-height: 600px;">
+            <div class="col-sm-7">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Newsfeed</h3>
+                    </div>
+                    <div id="newsfeedPanel" class="panel-body">
+                        <!--newsfeedPanel Body Start-->
+
+                        <div class="panel panel-default" style="margin-top: 15px;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Time stamp: Ex.: 03/06 12:35</h3>
+                            </div>
+                            <div class="panel-body"> Explanation: Ex.: Your field has reached its maximum harvesting potential! </div>
+                        </div>
+
+                        <div class="panel panel-default" style="margin-top: 15px;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Time stamp: Ex.: 03/06 12:35</h3>
+                            </div>
+                            <div class="panel-body"> Explanation: Ex.: Your field has reached its maximum harvesting potential! </div>
+                        </div>
+
+                        <div class="panel panel-default" style="margin-top: 15px;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Time stamp: Ex.: 03/06 12:35</h3>
+                            </div>
+                            <div class="panel-body"> Explanation: Ex.: Your field has reached its maximum harvesting potential! </div>
+                        </div>
+
+                        <div class="panel panel-default" style="margin-top: 15px;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Time stamp: Ex.: 03/06 12:35</h3>
+                            </div>
+                            <div class="panel-body"> Explanation: Ex.: Your field has reached its maximum harvesting potential! </div>
+                        </div>
+
+                        <!--newsfeedPanel Body End-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">User Stats</h3>
+                    </div>
+                    <div id="userStatsPanel" class="panel-body">
+                        <!--userStatsPanel Body Start-->
+
+                        <div class="panel panel-default" style="margin-top: 15px;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Job</h3>
+                            </div>
+                            <div class="panel-body">You are a {{getUserTypeFromDB}}. Wonderful! </div>
+                        </div>
+
+                        <div class="panel panel-default" style="margin-top: 15px;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">-pic- Money</h3>
+                            </div>
+                            <div class="panel-body">You got {{getUserFromDB.gameobject.money}} monieees! Thats a lot of monieees!</div>
+                        </div>
+
+                        <div class="panel panel-default" style="margin-top: 15px;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">-pic- Beans</h3>
+                            </div>
+                            <div class="panel-body">You got {{getUserFromDB.gameobject.coffee}} beans! Fabulous!</div>
+                        </div>
+
+                        <!--userStatsPanel Body End-->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </template>

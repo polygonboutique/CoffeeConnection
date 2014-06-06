@@ -59,7 +59,7 @@ Template.gameContent.logic = function () {
 
         }
 
-        /** replace the gameobject of the user in the database **/
+        /** replace the gameobject of the user in the database with the updated version **/
         Benutzer.update(user._id, {$set: { gameobject: gameObject } });
     }
 };

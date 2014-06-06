@@ -20,103 +20,104 @@ PageListing.prototype.resetPageList = function()
 
 pageList = new PageListing();
 
-
+//Is needed for detecting current position and scroll target on button press.
 checkPositionAndScroll = function(button){
-    var list = pageList.list; // pagelist ready
+    var list = pageList.list; // pageList ready
 
-    var currentPosition =  $(window).scrollTop() + ($(window).height() / 2);
-    var currentPositionUp =  $(window).scrollTop() - ($(window).height() / 2);
-    console.log("current pos: " + currentPosition);
-
+    var currentPositionMid =  ($(window).scrollTop() + ($(window).height() / 2));
+    var midOfUpperPagePosition =  ($(window).scrollTop() - ($(window).height() / 2));
+    var currentPositionBottom =  (($(window).scrollTop()) + ($(window).height()));
+    var currentPositionTop =  $(window).scrollTop();
     var scrollToElement = null;
 
     if(button == 'down'){
+        if(currentPositionBottom >= ($(list[list.length - 1]).position().top + $(list[list.length - 1]).height())){
+            console.log("Tried to scroll down on last page. checkPositionAndScroll returns.")
+            return;
+        }
         for(var i = 0; i < list.length; i++){
             var elementPosition = $(list[i]).position().top;
-                if(elementPosition >= currentPosition){
+            var elementPositionBottom = ($(list[list.length - 1]).position().top + $(list[list.length - 1]).height());
+                if(elementPosition > currentPositionTop){
                     scrollToElement = list[i];
-                    if(i + 1 >= list.length){
-                        console.log("DEACTIVATE BOTTOM BUTTON");
-                        $("#main_arrow_down").hide();
-                    }else{
-                        $("#main_arrow_up").show();
-                    }
                     break;
                 }
         }
-    }else if(button == 'up'){
+        //If no suitable element was found, scrollToElement is == null.
+        //Since we are not at the bottom yet, nor there is a page with a top that is below us, we are in the middle of the last page.
+        // --> Scroll to the bottom of last page.
+        if(scrollToElement == null){
+            //No suitable element found. Conclusion: goTo bottom of last page.
+            scrollToElement = list[list.length - 1];
+            console.log("scroll to bottom of element : " + scrollToElement);
+            $(scrollToElement).goToBottom();
+        }else{
+            //suitable element found. goTo it.
+            console.log("scroll to element : " + scrollToElement);
+            $(scrollToElement).goTo();
+        }
+    }
 
+    else if(button == 'up'){
+        if(currentPositionTop <= $(list[0]).position().top){
+            console.log("Tried to scroll up on first page. checkPositionAndScroll returns.")
+            return;
+        }
         for(var i = 0; i < list.length; i++){
             var j = Math.abs((i - list.length) + 1); // weil javascript komisch ist
             var elementPosition = $(list[j]).position().top;
-
-            if(elementPosition <= currentPositionUp){
+            if(elementPosition < currentPositionTop){
                 scrollToElement = list[j];
-                if(j <= 0){
-                    console.log("DEACTIVATE TOP BUTTON");
-                    $("#main_arrow_up").hide();
-                }else{
-                    console.log("show top button");
-                   // $("#main_arrow_up").show();
-                    $("#main_arrow_down").show();
-                    // $("#main_arrow_up").css("display", "visible");
-                }
                 break;
             }
         }
-    }else if(button == 'none'){
-        //check only buttons!
-
-        console.log($(list[list.length - 1]).position().top);
-
-        if($(window).scrollTop() == 0){
-            $("#main_arrow_up").hide();
-        }else if($(window).scrollTop() >= $(list[list.length - 1]).position().top){
-            $("#main_arrow_down").hide();
-        }
+        // scroll to
+        console.log("scroll to element : " + scrollToElement);
+        $(scrollToElement).goTo();
     }
 
-    // scroll to
-    console.log("scroll to element : " + scrollToElement);
-    $(scrollToElement).goTo();
-
+    //This is called just once at the loading of the site.
+    //Not called on mouse press / arrow button press or scrolling.
+    else if(button == 'none'){
+        checkPosition();
+    }
   }
 
+//Is needed for detection of currentPosition and hiding/showing buttons when scrolling.
 checkPosition = function(direction){
+//    console.log("checkPosition was called!");
     var list = pageList.list;
-    var currentPosition =  $(window).scrollTop();
+//    var currentPositionBottom =  $(window).scrollTop() + ($(window).height() / 2);
+//    var currentPositionTop =  $(window).scrollTop() - ($(window).height() / 2);
+    var currentPositionBottom =  (($(window).scrollTop()) + ($(window).height()));
+    var currentPositionTop =  $(window).scrollTop();
 
-    if(direction == 'down'){
-        for(var i = 0; i < list.length; i++){
-            var elementPosition = $(list[i]).position().top + ($(list[i]).height() / 2);
-            if(elementPosition >= currentPosition){
-                if(i + 1 >= list.length){
-                    $("#main_arrow_down").hide();
-                }else{
-                    $("#main_arrow_up").show();
-                }
-                break;
-            }
-        }
-    }else if(direction == 'up'){
-        for(var i = 0; i < list.length; i++){
-            var j = Math.abs((i - list.length) + 1); // weil javascript komisch ist
-            var elementPosition = $(list[j]).position().top - ($(list[j]).height() / 2);
+//    console.log("$(window).scrollTop(): " + $(window).scrollTop());
+//    console.log("$(window).height(): " + $(window).height());
+//    console.log("$(window).scrollTop() + ($(window).height() / 2): " + (($(window).scrollTop()) + ($(window).height())));
+//    console.log("$(list[list.length - 1]).position().bottom): " + $(list[list.length - 1]).position().bottom);
+//    console.log("currentPositionBottom: " + currentPositionBottom);
+//    console.log("currentPositionTop: " + currentPositionTop);
+//    console.log("last page bottom .bottom: " + ($(list[list.length - 1]).position().top + $(list[list.length - 1]).height()));
+//    console.log("last page bottom .top: " + $(list[list.length - 1]).position().top);
 
-            if(elementPosition <= currentPosition){
-                if(j <= 0){
-                    $("#main_arrow_up").hide();
-                }else{
-                    $("#main_arrow_down").show();
-                }
-                break;
-            }
-        }
+    //Check if the down arrow should be displayed or not.
+    if(currentPositionBottom >= ($(list[list.length - 1]).position().top + $(list[list.length - 1]).height())){
+        console.log("Tried to scroll down on last page. checkPosition hides down button and returns.")
+        $("#main_arrow_down").hide();
+        return;
+    }
+    else{
+        $("#main_arrow_down").show();
     }
 
-    if($(window).scrollTop() == 0){
+    //Check if the up arrow should be displayed or not.
+    if(currentPositionTop <= $(list[0]).position().top){
+        console.log("Tried to scroll up on first page. checkPosition hides up button and returns.")
         $("#main_arrow_up").hide();
-    }else if($(window).scrollTop() >= $(list[list.length - 1]).position().top){
-        $("#main_arrow_down").hide();
+        return;
+    }
+    else{
+        $("#main_arrow_up").show();
     }
 }

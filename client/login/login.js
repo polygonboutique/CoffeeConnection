@@ -34,6 +34,7 @@ Template.login.events({
                     window.location.reload();
                 }else{
                     $('#login_error').text(login.errorPasswordsDoNotMatch());
+                    $('#login_error').addClass('alert alert-danger');
                 }
             }else{
                 $('#login_error').text(login.errorEmailNotFound());

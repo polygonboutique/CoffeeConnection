@@ -36,9 +36,10 @@ checkPositionAndScroll = function(button){
             return;
         }
         for(var i = 0; i < list.length; i++){
-            var elementPosition = $(list[i]).position().top;
-            var elementPositionBottom = ($(list[list.length - 1]).position().top + $(list[list.length - 1]).height());
-                if(elementPosition > currentPositionTop){
+            var elementPositionTop = Math.floor($(list[i]).position().top); //Math.floor(), because elementPosition can indeed be a decimal!
+            var elementPositionBottom = Math.floor(($(list[list.length - 1]).position().top + $(list[list.length - 1]).height())); //Math.floor(), because elementPosition can indeed be a decimal!
+                if(elementPositionTop > currentPositionTop){
+                    console.log("elementPositionTop: " + elementPositionTop + ", currentPositionTop: " + currentPositionTop)
                     scrollToElement = list[i];
                     break;
                 }
@@ -65,8 +66,8 @@ checkPositionAndScroll = function(button){
         }
         for(var i = 0; i < list.length; i++){
             var j = Math.abs((i - list.length) + 1); // weil javascript komisch ist
-            var elementPosition = $(list[j]).position().top;
-            if(elementPosition < currentPositionTop){
+            var elementPositionTop = Math.floor($(list[j]).position().top); //Math.floor(), because elementPosition can indeed be a decimal!
+            if(elementPositionTop < currentPositionTop){
                 scrollToElement = list[j];
                 break;
             }
@@ -87,8 +88,6 @@ checkPositionAndScroll = function(button){
 checkPosition = function(direction){
 //    console.log("checkPosition was called!");
     var list = pageList.list;
-//    var currentPositionBottom =  $(window).scrollTop() + ($(window).height() / 2);
-//    var currentPositionTop =  $(window).scrollTop() - ($(window).height() / 2);
     var currentPositionBottom =  (($(window).scrollTop()) + ($(window).height()));
     var currentPositionTop =  $(window).scrollTop();
 

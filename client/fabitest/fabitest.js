@@ -8,8 +8,8 @@
         console.log( 'clicked outside of div' );
     });
 });
+ */
 
-
-Template.logout.created = function(){
+Template.fabitest.created = function(){
     pageList.addPage('#tpl_fabitest');
-};*/
+};

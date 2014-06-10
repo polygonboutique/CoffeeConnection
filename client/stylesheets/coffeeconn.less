@@ -19,7 +19,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 html, body {height: 100%; width: 100%}
 
 #tpl_login{
-  background: @grey;
+  background: url('/img/Wood3_LowerHalf.jpg') top;
   width: 100%;
   height: 100%;
   min-height: 650px;
@@ -35,12 +35,24 @@ html, body {height: 100%; width: 100%}
 #login_box{
 /* position der login box */
   width: 25%;
-  height: 50%;
+//  height: 50%; //Determined by content
   top: 25%;
   position: relative;
   margin: 0 auto;
- // background: white;
+  padding: 10px;
+  background: rgba(220, 220, 220, 1);
 // min-width: 450px;
+
+  //Rounded corners
+  border-radius: 10px;
+  -moz-border-radius: 10px;  //For Firefox
+  -webkit-border-radius: 10px;   //For Inet Exp?
+
+  //Border
+  border: 4px solid round rgba(32, 32, 32, 1);
+
+  //Shadow
+  box-shadow:0px 0px 10px rgba(0, 0, 0, 1);
 }
 
 #login_box_content{
@@ -54,30 +66,88 @@ html, body {height: 100%; width: 100%}
 }
 
 #tpl_logo{
-  background: black;
-  color: black;
-/*
-  height: 100%;
-  */
+  background: url('/img/kaffee.jpg') bottom;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  min-height: 650px;
+}
+
+#logo_box{
+  /* position der login box */
+  width: 45%;
+  //  height: 50%; //Determined by content
+  top: 25%;
+  position: relative;
+  margin: 0 auto;
+  padding: 20px;
+  min-width: 450px;
+  //background gradient for several browsers
+  background: #e8dec2; /* Old browsers */
+  background: -moz-linear-gradient(top, #e8dec2 0%, #bf8a45 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e8dec2), color-stop(100%,#bf8a45)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #e8dec2 0%,#bf8a45 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #e8dec2 0%,#bf8a45 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #e8dec2 0%,#bf8a45 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #e8dec2 0%,#bf8a45 100%); /* W3C */
+
+
+  //Rounded corners
+  border-radius: 10px;
+  -moz-border-radius: 10px;  //For Firefox
+  -webkit-border-radius: 10px;   //For Inet Exp?
+
+  //Border
+  border: 4px solid round rgba(32, 32, 32, 1);
+
+  //Shadow
+  box-shadow:0px 0px 10px rgba(0, 0, 0, 1);
+
+//  //headline
+//  h1{
+//    font-size:44px;
+//    font: "Buxton Sketch"
+//  }
+}
+
+//#logo_pic{
+//  margin: auto;
+//  margin-right: 0px;
+//  float:right;
+//  position: relative;
+//}
+
+#logo_buttons{
+  margin: 0 auto;
 }
 
 #tpl_register{
-  background: @pink;
+  background: url('/img/Wood3_UpperHalf.jpg') bottom;
   width: 100%;
   height: 100%;
   min-height: 650px;
 }
 
 #register_box{
-/* position der register box */
+  /* position der login box */
   width: 35%;
-  height: 50%;
+  //  height: 50%; //Determined by content
   top: 25%;
   position: relative;
   margin: 0 auto;
+  padding: 10px;
+  background: rgba(220, 220, 220, 1);
   min-width: 450px;
+
+  //Rounded corners
+  border-radius: 10px;
+  -moz-border-radius: 10px;  //For Firefox
+  -webkit-border-radius: 10px;   //For Inet Exp?
+
+  //Border
+  border: 4px solid round rgba(32, 32, 32, 1);
+
+  //Shadow
+  box-shadow:0px 0px 10px rgba(0, 0, 0, 1);
 }
 
 #register_box_content{
@@ -91,7 +161,8 @@ html, body {height: 100%; width: 100%}
 }
 
 #tpl_userStats{
-  background: #75889a;
+//  background: #75889a;
+  background: url('/img/BlueNebula1.jpg') center;
   width: 100%;
   height: auto;
   min-height: 100%;
@@ -107,18 +178,31 @@ html, body {height: 100%; width: 100%}
 }
 
 #logo_text{
-/* center */
-  width: 100%;
-  position: relative;
-  margin: auto auto;
-  top: 50%;
-
-/* font */
-  font-size: 40px;
-  text-transform: uppercase;
-  font-family: @font;
-  text-align: center;
-}
+//   /* center */
+//   width: 70%;
+//   position: relative;
+//   //  margin: auto auto;
+//   top: 50%;
+//   margin: 0 auto;
+//   //  margin-top: 50%;
+//
+//   /* font */
+//   font-size: 40px;
+//   text-transform: uppercase;
+//   font-family: @font;
+//   text-align: center;
+//
+//   //Rounded corners
+//   border-radius: 10px;
+//   -moz-border-radius: 10px;  //For Firefox
+//   -webkit-border-radius: 10px;   //For Inet Exp?
+//
+//   //Border
+//   border: 4px solid round rgba(32, 32, 32, 1);
+//
+//   //Shadow
+//   box-shadow:0px 0px 10px rgba(0, 0, 0, 1);
+ }
 
 #arr_btn_dwn{
   margin: -0 auto;

@@ -12,9 +12,28 @@
 
         <!--{{showProfileYo.id}}-->
 
-        <div class="row" style="margin: 15px; min-height: 600px;">
+
+        <div class="row" style="padding: 15px 0px 15px 0px; margin: 0px 30px 0px 30px;">
+            <div class="col-sm-6">
+
+                    <!--Has the same style as the button to align them.-->
+                    <div style="padding: 10px 16px; font-size: 18px; line-height: 1.33; text-align: center;">Welcome, {{getUserFromDB.name}}!</div>
+                    <!--Has the same style as the button to align them.-->
+
+            </div>
+            <div class="col-sm-6">
+                <div class="pull-right">
+                    <div style="margin-right: 30px;">
+                        <button type="submit" name="submit" id="logout" class="btn btn-lg btn-default" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" style="padding: 15px 0px 15px 0px; margin: 0px 30px 0px 30px; min-height: 600px;">
             <div class="col-sm-7">
-                <div class="panel panel-info">
+                <div class="panel panel-info" style="box-shadow:0px 0px 10px rgba(0, 0, 0, 1);">
                     <div class="panel-heading">
                         <h3 class="panel-title">Newsfeed</h3>
                     </div>
@@ -54,9 +73,9 @@
                 </div>
             </div>
             <div class="col-sm-5">
-                <div class="panel panel-success">
+                <div class="panel panel-success" style="box-shadow:0px 0px 10px rgba(0, 0, 0, 1);">
                     <div class="panel-heading">
-                        <h3 class="panel-title">User Stats</h3>
+                        <h3 class="panel-title">Statistics</h3>
                     </div>
                     <div id="userStatsPanel" class="panel-body">
                         <!--userStatsPanel Body Start-->

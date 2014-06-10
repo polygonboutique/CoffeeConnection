@@ -23,6 +23,14 @@ Template.userStats.created = function(){
     pageList.addPage('#tpl_userStats');
 };
 
+Template.userStats.events({
+    /** Logout code **/
+    'click #logout': function (e, tpl) {
+        AmplifiedSession.set("user", null);
+        window.location.reload();
+    }
+});
+
 Template.userStats.getUserFromDB = function(){
     var userMail = AmplifiedSession.get("user").email;
     var user = Benutzer.find({"email" : userMail}).fetch();

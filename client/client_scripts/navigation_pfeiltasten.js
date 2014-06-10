@@ -1,3 +1,5 @@
+//Executed on arrow button up or down press
+//Not executed when scrolling per mousewheel or clicking arrow buttons per mouse.
 $(document).keydown(function(event) {
     if(event.keyCode == 40){
         event.preventDefault();

@@ -2,20 +2,62 @@
 * author: Sergej.
 -->
 <template name="logo">
-    <div name="tpl_logo_name" class="container theme-showcase" role="main" id="tpl_logo">
-        <div class="jumbotron">
-            <h1>Coffee Connection + Logo</h1>
+    <div name="tpl_logo_name" role="main" id="tpl_logo">
+        <div id="logo_box" class="container" >
 
-            <h2>Hello, world!</h2>
-
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a
-                jumbotron and three supporting pieces of content. Use it as a starting point to create something more
-                unique.</p>
+            <table class="table">
+                <tr>
+                    <td style="float: left">
+                        <img src="/img/Schriftzug.png" height="128px" width="350px">
+                    </td>
+                    <td style="float: right">
+                        <img src="/img/CC_Logo.png" height="128px" width="128px">
+                    </td>
+                </tr>
+            </table>
 
             <p>
-                <a href="#" class="btn btn-primary btn-lg" role="button" onclick="$('#tpl_login').goTo()">Login</a>
-                <a href="#" class="btn btn-primary btn-lg" role="button" onclick="$('#tpl_register').goTo()">Register</a>
-            </p>
+
+            <h5>Du möchtest ein skrupelloser Kaffee-Bauer sein, der seine Mitarbeiter sklavenähnlich behandelt und
+                vor nichts und Niemandem zurückschreckt? Oder möchtest du einen kapitalistischen Cafe-Besitzer spielen,
+                der seine Barista am Rande der Armutsgrenze bezahlt und seinen Kunden umso mehr Geld aus der Tasche
+                zieht, nur weil dein Kaffee gerade in der Szene angesagt ist?
+                Dann bist du bei Coffee Connection genau richtig. Spiele einen Bauern und scheiß auf "Fair Trade", wenn
+                dein Kaffee der beliebteste des gesamten Planeten wird und wirklich jeder jeden Preis für einen Sack
+                deiner Bohnen bezahlen würde.
+                Oder spiele einen Cafe-Besitzer und steige auf zum Kaffee-Mogul deiner Stadt, wenn deine Röstung
+                Kultstatus erreicht und auf einmal hip bei den KidZz ist. Yo!.
+                Registriere dich jetzt und spiele Coffee Connection komplett kostenlos*.</h5></p>
+
+            <h6><p>*(Kostenlose Version beinhaltet: Spielen eines Bauerns. Begrenzung der Felder auf 4. Begrenzung der
+                verfügbaren Plantagen auf eine. Aberntung nur einmal alle 24h.
+                Premiummitgliedschaft: eine Woche nur 9,99€**, ein Monat nur 49,99€**)</p>
+
+                <p>**(DLCs nicht mitinbegriffen)</p></h6>
+
+            <h5><p style="float: right">Copyright CC-Team 2014, Alle Rechte vorbehalten</p></h5>
+
+            {{#if notLoggedIn}}
+                <div class="btn-group btn-group-justified">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="$('#tpl_login').goTo()">Login</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="$('#tpl_register').goTo()">Register
+                        </button>
+                    </div>
+                </div>
+            {{else}}
+                <div class="btn-group btn-group-justified">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="$('#tpl_userStats').goTo()">User</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="$('#tpl_gameContent').goTo()">Plantation
+                        </button>
+                    </div>
+                </div>
+            {{/if}}
         </div>
     </div>
 </template>

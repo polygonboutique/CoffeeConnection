@@ -4779,6 +4779,22 @@ a.list-group-item-danger.active:focus {
   font-size: 16px;
   color: inherit;
 }
+
+.panel-money-icon{
+    width: 16px;
+    height: 16px;
+    background: white;
+    position: relative;
+    /*margin-left: 5%;
+    margin-top: 5px;*/
+    float: left;
+    background: url('/img/coinicon.png') !important;
+    background-size: 100% auto !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
 .panel-title > a {
   color: inherit;
 }

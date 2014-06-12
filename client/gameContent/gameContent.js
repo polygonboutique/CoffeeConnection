@@ -101,7 +101,7 @@ Template.gameContent.logic = function () {
  * **/
 
 //global
-currentAction = "harvest";
+currentAction = "none";
 logic = false;
 harvestBeansAmount = 3; // sollte demnächst in der datenbank stehen, damit das mit perks aufwerten kann
 actionArray = ["harvest", "plant", "delete"];
@@ -118,6 +118,14 @@ stepGame = function(id){
 
         if(field.status == 3){
             gameObject = harvestBeans(field, id, gameObject);
+           // $("#game_feld[fieldID='"+fieldID+"']").
+            console.log(getMousePosition());
+
+            /** hier animation abspielen, bzw. nen div spawnen lassen **/
+            spawnAnimation("animation_bean", 64, 300);
+            spawnAnimation("animation_bean", 32, 300);
+            spawnAnimation("animation_bean", 16, 300);
+            spawnAnimation("animation_bean", 8, 300);
         }
 
     }else if(currentAction == "plant"){

@@ -12,7 +12,7 @@
      g_height = $(window).height();
      g_width = $(window).width();
 
-     var minMargin = -0.0235;
+     var minMargin = -0.004;
      var maxMargin = 0.03;
 
      if(AmplifiedSession.get("user") != null){

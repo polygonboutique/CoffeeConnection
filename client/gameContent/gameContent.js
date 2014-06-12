@@ -119,13 +119,10 @@ stepGame = function(id){
         if(field.status == 3){
             gameObject = harvestBeans(field, id, gameObject);
            // $("#game_feld[fieldID='"+fieldID+"']").
-            console.log(getMousePosition());
+//            console.log(getMousePossition());
 
             /** hier animation abspielen, bzw. nen div spawnen lassen **/
-            spawnAnimation("animation_bean", 64, 300);
-            spawnAnimation("animation_bean", 32, 300);
-            spawnAnimation("animation_bean", 16, 300);
-            spawnAnimation("animation_bean", 8, 300);
+            spawnAnimation("animation_bean", 64, 500);
         }
 
     }else if(currentAction == "plant"){

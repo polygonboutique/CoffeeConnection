@@ -40,12 +40,6 @@ Template.gameContent.logic = function () {
                     console.log(field);
 
                     var content = "";
-                    /*
-                     if(i == 0){
-                     content = "<img src='https://www.google.de/logos/doodles/2014/honinbo-shusakus-185th-birthday-6002788731453440-hp.gif' width='100%' height='100%'>";
-                     }
-                     */
-
 
                     $('#game').append('<div id="game_feld" class="game_feld_background" fieldID="'+ i +'" onclick="stepGame('+i+')" >'+content+'</div>');
                     var addedField = $("#game_feld[fieldID='"+i+"']");
@@ -53,6 +47,10 @@ Template.gameContent.logic = function () {
 
                     var feldStatus = "";
 
+                    /**
+                     * Wenn Felder in einem niedrigen Status sind, dann Funktion zum 'reifen' aufrufen.
+                     * Ansich sollte die Zeit der Erstellung der Plfanze in der DB gespeichert werden!
+                     * **/
                     if(field.status == 0){
                         feldStatus = "game_feld_empty";
                     }else if(field.status == 1){
@@ -73,9 +71,9 @@ Template.gameContent.logic = function () {
                 $('#game').append('<div id="game_panel"></div>');
 
                 //var harvest = "'harvest'";
-                $('#game_panel').append('<div id="harvest" class="harvest_icon" onclick="changeCurrentAction('+"'harvest'"+')"></div>');
-                $('#game_panel').append('<div id="plant" class="plant_icon" onclick="changeCurrentAction('+"'plant'"+')"></div>');
-                $('#game_panel').append('<div id="delete" class="shovel_icon" onclick="changeCurrentAction('+"'delete'"+')"></div>');
+                $('#game_panel').append('<div id="harvest" class="game_panel_icon" onclick="changeCurrentAction('+"'harvest'"+')"><img src="/img/scytheicon.png" class="game_panel_icon_img"></div>');
+                $('#game_panel').append('<div id="plant" class="game_panel_icon" onclick="changeCurrentAction('+"'plant'"+')"><img src="/img/planticon.png" class="game_panel_icon_img"></div>');
+                $('#game_panel').append('<div id="delete" class="game_panel_icon" onclick="changeCurrentAction('+"'delete'"+')"><img src="/img/shovelicon.png" class="game_panel_icon_img"></div>');
                 $('#game_panel').append('<div class="game_panel_icon" onclick="changeCurrentAction('+"'other'"+')">Other</div>');
 
             }else if(userType == 1){ // röster

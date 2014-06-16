@@ -69,6 +69,7 @@ Template.register.events({
                                 name : username,
                                 email : email,
                                 password : password,
+                                connections : [], // add empty array
                                 gameobject : {
                                     type : userType,
                                     money : 0,

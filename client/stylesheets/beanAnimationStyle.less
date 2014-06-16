@@ -1,11 +1,15 @@
 .animation_bean{
-  width: 128px;
-  height: 128px;
-  //background:  url('/img/BeanJumpRight_Endless.gif');
-  background-size: 100% auto;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  //background: red;
+//  width: 128px;
+//  height: 128px;
+//  background:  red;
+//  background-size: 100% auto;
+//  background-position: center top;
+//  background-repeat: no-repeat;
+//  background-size: cover;
+//  background: red;
   position: absolute;
+
+  //Prevents the div from overlaying other components and hindering mouse events.
+  pointer-events: none; //Most browsers
+  background: none !important; //IE
 };

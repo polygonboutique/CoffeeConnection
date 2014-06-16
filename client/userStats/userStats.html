@@ -4,13 +4,6 @@
 <template name="userStats">
 
     <div name="tpl_userStats_name" id="tpl_userStats">
-        <!--{{#each showProfile}} &lt;!&ndash; each: um auf die felder des jsons zugreifen zukönnen. &ndash;&gt;-->
-            <!--{{name}}: {{id}} <br>-->
-            <!--{{gameobject}} &lt;!&ndash; wird in zukunft ein json sein... &ndash;&gt;-->
-        <!--{{/each}}-->
-        <!--Test <br>-->
-
-        <!--{{showProfileYo.id}}-->
 
         <div class="row" style="padding: 15px 0px 15px 0px; margin: 0px 30px 0px 30px;">
             <div class="col-sm-6">
@@ -30,7 +23,7 @@
         </div>
 
 
-        <div class="row" style="padding: 15px 0px 15px 0px; margin: 0px 30px 0px 30px; min-height: 600px;">
+        <div class="row" style="padding: 15px 0px 15px 0px; margin: 0px 30px 0px 30px;">
             <div class="col-sm-7">
                 <div class="panel panel-info" style="box-shadow:0px 0px 10px rgba(0, 0, 0, 1);">
                     <div class="panel-heading">
@@ -81,21 +74,25 @@
 
                         <div class="panel panel-default" style="margin-top: 15px;">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Job</h3>
+                                <h3 class="panel-title">-pic- Connections</h3>
                             </div>
-                            <div class="panel-body">You are a {{getUserTypeFromDB}}. Wonderful! </div>
+                            <div class="panel-body">
+                                You have (stub) 117 connections! <br>
+                                Your profit is increased by (stub) 1170% <br>
+                                ...? Profit!
+                            </div>
                         </div>
 
                         <div class="panel panel-default" style="margin-top: 15px;">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><img src="/img/coinicon.png" width="16px" height="16px"> Money</h3>
+                                <h3 class="panel-title">-pic- Money</h3>
                             </div>
                             <div class="panel-body">You got {{getUserFromDB.gameobject.money}} monieees! Thats a lot of monieees!</div>
                         </div>
 
                         <div class="panel panel-default" style="margin-top: 15px;">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><img src="/img/beanicon.png" width="16px" height="16px"> Beans</h3>
+                                <h3 class="panel-title">-pic- Beans</h3>
                             </div>
                             <div class="panel-body">You got {{getUserFromDB.gameobject.coffee}} beans! Fabulous!</div>
                         </div>
@@ -105,6 +102,47 @@
                 </div>
             </div>
         </div>
-    </div>
 
+        <!--<div id="connectionsList" class="overflowList">-->
+            <!--<ul class="list-inline">-->
+                <!--{{createConnectionsList}}-->
+            <!--</ul>-->
+        <!--</div>-->
+
+        <div class="row" style="padding: 15px 0px 15px 0px; margin: 0px 30px 0px 30px;">
+            <div class="col-sm-12">
+                <div class="panel panel-success" style="box-shadow:0px 0px 10px rgba(0, 0, 0, 1);">
+
+
+                        <div class="panel-heading">
+                            <div class="row" style="padding: 0px; margin: 0px;">
+                                <div class="col-sm-4">
+                                        <h2 class="panel-title" style="margin: 10px">Connections</h2>
+                                    </div>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <input placeholder="E-Mail of User to add" type="text" class="form-control" id="addField">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="submit" value="addButton" id="addButton">Add</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    <div id="connectionsPanel" class="panel-body">
+                        <!--connectionsPanel Body Start-->
+                            <div class="overflowList">
+                                <ul id="connectionsList" class="list-inline">
+                                    {{createConnectionsList}}
+                                </ul>
+                            </div>
+                        <!--connectionsPanel Body End-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </template>

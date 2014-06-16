@@ -30,9 +30,6 @@ Template.gameContent.logic = function () {
 
             if(userType == 0){ // farmer
 
-                /*            $('#game').append('<h1>Farmer</h1>');
-                 $('#game').append('<h1>MONIEEEES: ' + gameObject.money +  '</h1>');*/
-
                 for(var i = 0; i < gameObject.fields.length; i++){
                     var field = gameObject.fields[i];
 
@@ -71,19 +68,57 @@ Template.gameContent.logic = function () {
                 $('#game').append('<div id="game_panel"></div>');
 
                 //var harvest = "'harvest'";
-                $('#game_panel').append('<div id="harvest" class="game_panel_icon" onclick="changeCurrentAction('+"'harvest'"+')"><img src="/img/scytheicon.png" class="game_panel_icon_img"></div>');
-                $('#game_panel').append('<div id="plant" class="game_panel_icon" onclick="changeCurrentAction('+"'plant'"+')"><img src="/img/planticon.png" class="game_panel_icon_img"></div>');
-                $('#game_panel').append('<div id="delete" class="game_panel_icon" onclick="changeCurrentAction('+"'delete'"+')"><img src="/img/shovelicon.png" class="game_panel_icon_img"></div>');
+                $('#game_panel').append('<div id="harvest" class="game_panel_icon" onclick="changeCurrentAction('+"'harvest'"+')"><div class="harvest_icon"></div></div>');
+                $('#game_panel').append('<div id="plant" class="game_panel_icon" onclick="changeCurrentAction('+"'plant'"+')"><div class="plant_icon"></div></div>');
+                $('#game_panel').append('<div id="delete" class="game_panel_icon" onclick="changeCurrentAction('+"'delete'"+')"><div class="shovel_icon"></div></div>');
                 $('#game_panel').append('<div class="game_panel_icon" onclick="changeCurrentAction('+"'other'"+')">Other</div>');
 
             }else if(userType == 1){ // röster
-                // $('#game').append("<h1>ROSTER</h1>");
+                for(var i = 0; i < gameObject.fields.length; i++){
+                    var field = gameObject.fields[i];
+
+                    var content = "";
+
+                    $('#game').append('<div id="game_feld" fieldID="'+ i +'" onclick="stepGame('+i+')" >'+content+'</div>');
+                    var addedField = $("#game_feld[fieldID='"+i+"']");
+                    addedField.css('height', addedField.width());
+
+                    var feldStatus = "";
+
+                    /**
+                     * Wenn Felder in einem niedrigen Status sind, dann Funktion zum 'reifen' aufrufen.
+                     * Ansich sollte die Zeit der Erstellung der Plfanze in der DB gespeichert werden!
+                     * **/
+                    if(field.status == 0){
+                        feldStatus = "game_roast_empty";
+                    }else if(field.status == 1){
+                        feldStatus = "game_roast_state1";
+                    }else if(field.status == 2){
+                        feldStatus = "game_roast_state2";
+                    }else if(field.status == 3){
+                        feldStatus = "game_roast_state3";
+                    }
+
+                    addedField.addClass(feldStatus);
+
+                    if(i % 4 == 0) {
+                        addedField.css('margin-left', '14%');
+                        addedField.css('clear', 'both');
+                    }
+                }
+
+                /** icon panel **/
+                $('#game').append('<div id="game_panel" class="game_panel_roeste"></div>');
+                $('#game_panel').append('<div id="harvest" class="game_panel_icon" onclick="changeCurrentAction('+"'harvest'"+')"><div class="hand_icon"></div></div>');
+                $('#game_panel').append('<div id="plant" class="game_panel_icon" onclick="changeCurrentAction('+"'plant'"+')"><div class="build_icon"></div></div>');
+                $('#game_panel').append('<div id="delete" class="game_panel_icon" onclick="changeCurrentAction('+"'delete'"+')"><div class="wreck_icon"></div></div>');
+                $('#game_panel').append('<div class="game_panel_icon" onclick="changeCurrentAction('+"'other'"+')">Other</div>');
+
+                $('#tpl_gameContent').addClass('game_roeste_background');
             }
 
             /** replace the gameobject of the user in the database **/
             Benutzer.update(user._id, {$set: { gameobject: gameObject } });
-
-            //startLoop(user);
             logic = true;
         }
     }
@@ -116,8 +151,6 @@ stepGame = function(id){
 
         if(field.status == 3){
             gameObject = harvestBeans(field, id, gameObject);
-           // $("#game_feld[fieldID='"+fieldID+"']").
-//            console.log(getMousePossition());
 
             /** hier animation abspielen, bzw. nen div spawnen lassen **/
             spawnAnimation("animation_bean", 64, 500);
@@ -129,8 +162,14 @@ stepGame = function(id){
 
             var addedField = $("#game_feld[fieldID='"+id+"']");
             addedField.removeClass();
-            addedField.addClass("game_feld_background");
-            addedField.addClass("game_feld_planted");
+
+            if(gameObject.type == 0){ // farmer
+                addedField.addClass("game_feld_background");
+                addedField.addClass("game_feld_planted");
+            }else{
+                addedField.addClass("game_roast_state1");
+            }
+
 
             spawnTimer(function(){
 
@@ -144,8 +183,14 @@ stepGame = function(id){
 
                 var addedField = $("#game_feld[fieldID='"+id+"']");
                 addedField.removeClass();
-                addedField.addClass("game_feld_background");
-                addedField.addClass("game_feld_grown");
+
+                if(gameObject.type == 0){ // farmer
+                    addedField.addClass("game_feld_background");
+                    addedField.addClass("game_feld_grown");
+                }else{
+                    addedField.addClass("game_roast_state2");
+                }
+
                 Benutzer.update(user._id, {$set: { gameobject: gameObject } });
 
                 /** change plant to be ready **/
@@ -163,19 +208,30 @@ stepGame = function(id){
 
                     var addedField = $("#game_feld[fieldID='"+id+"']");
                     addedField.removeClass();
-                    addedField.addClass("game_feld_background");
-                    addedField.addClass("game_feld_harvest");
-                    Benutzer.update(user._id, {$set: { gameobject: gameObject } });
-                }, 400);
 
-            }, 400);
+                    if(gameObject.type == 0){ // farmer
+                        addedField.addClass("game_feld_background");
+                        addedField.addClass("game_feld_harvest");
+                    }else{
+                        addedField.addClass("game_roast_state3");
+                    }
+
+                    Benutzer.update(user._id, {$set: { gameobject: gameObject } });
+                }, 800);
+
+            }, 800);
         }
     }else if(currentAction == "delete"){
         field.status = 0;
         var addedField = $("#game_feld[fieldID='"+id+"']");
         addedField.removeClass();
-        addedField.addClass("game_feld_background");
-        addedField.addClass("game_feld_empty");
+
+        if(gameObject.type == 0){ // farmer
+            addedField.addClass("game_feld_background");
+            addedField.addClass("game_feld_empty");
+        }else{
+            addedField.addClass("game_roast_empty");
+        }
 
     }
 
@@ -224,43 +280,44 @@ harvestBeans = function(field, fieldID, gameObject){
         gameObject.coffee = gameObject.coffee + harvestBeansAmount;
     }
 
-/*
-    if(field.beans == 0){
-        var addedField = $("#game_feld[fieldID='"+fieldID+"']");
-        addedField.removeClass();
-        addedField.addClass("game_feld_background");
-        addedField.addClass("game_feld_empty");
-    }
-*/
-
     /** feld nachwachsen lassen! **/
     if(field.beans == 0){
         field.status = 2;
         var addedField = $("#game_feld[fieldID='"+fieldID+"']");
         addedField.removeClass();
-        addedField.addClass("game_feld_background");
-        addedField.addClass("game_feld_grown");
+
+        if(gameObject.type == 0){
+            addedField.addClass("game_feld_background");
+            addedField.addClass("game_feld_grown");
+        }else{
+            addedField.addClass("game_roast_state2"); // TODO: hier auf _empty setzen
+        }
 
         /** change plant to be ready **/
-        spawnTimer(function(){
-            /** get the recent gameobject from the db and modify it! **/
-            var userMail = AmplifiedSession.get("user").email;
-            var user = Benutzer.find({"email" : userMail}).fetch();
-            user = user[0];
+        if(gameObject.type == 0){ // farmer
+            spawnTimer(function(){
+                /** get the recent gameobject from the db and modify it! **/
+                var userMail = AmplifiedSession.get("user").email;
+                var user = Benutzer.find({"email" : userMail}).fetch();
+                user = user[0];
 
-            var gameObject = user.gameobject;
-            var field = gameObject.fields[fieldID];
-            field.status = 3;
+                var gameObject = user.gameobject;
+                var field = gameObject.fields[fieldID];
+                field.status = 3;
 
-            /** anzahl der bohnen kann von sorte zu sorte variieren **/
-            field.beans = 100;
+                /** anzahl der bohnen kann von sorte zu sorte variieren **/
+                field.beans = 100;
 
-            var addedField = $("#game_feld[fieldID='"+fieldID+"']");
-            addedField.removeClass();
-            addedField.addClass("game_feld_background");
-            addedField.addClass("game_feld_harvest");
-            Benutzer.update(user._id, {$set: { gameobject: gameObject } });
-        }, 1000);
+                var addedField = $("#game_feld[fieldID='"+fieldID+"']");
+                addedField.removeClass();
+
+                    addedField.addClass("game_feld_background");
+                    addedField.addClass("game_feld_harvest");
+
+
+                Benutzer.update(user._id, {$set: { gameobject: gameObject } });
+            }, 5000);
+        }
     }
 
     return gameObject;

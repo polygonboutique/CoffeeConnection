@@ -74,25 +74,24 @@
 
                         <div class="panel panel-default" style="margin-top: 15px;">
                             <div class="panel-heading">
-                                <h3 class="panel-title">-pic- Connections</h3>
+                                <h3 class="panel-title"><img src="/img/CC_Logo.png" width="16" height="16"> Connections</h3>
                             </div>
                             <div class="panel-body">
                                 You have {{getUserFromDB.connections.length}} connections! <br>
-                                Your profit is increased by (stub) 1170% <br>
-                                ...? Profit!
+                                Your profit is increased by {{getProfit}}%
                             </div>
                         </div>
 
                         <div class="panel panel-default" style="margin-top: 15px;">
                             <div class="panel-heading">
-                                <h3 class="panel-title">-pic- Money</h3>
+                                <h3 class="panel-title"><img src="/img/coinicon.png" width="16" height="16"> Money</h3>
                             </div>
                             <div class="panel-body">You got {{getUserFromDB.gameobject.money}} monieees! Thats a lot of monieees!</div>
                         </div>
 
                         <div class="panel panel-default" style="margin-top: 15px;">
                             <div class="panel-heading">
-                                <h3 class="panel-title">-pic- Beans</h3>
+                                <h3 class="panel-title"><img src="/img/beanicon.png" width="16" height="16"> Beans</h3>
                             </div>
                             <div class="panel-body">You got {{getUserFromDB.gameobject.coffee}} beans! Fabulous!</div>
                         </div>
@@ -121,9 +120,10 @@
                                     </div>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input placeholder="E-Mail of User to add" type="text" class="form-control" id="addField">
+                                        <input placeholder="E-Mail of User to add or delete" type="text" class="form-control" id="addField">
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" type="submit" value="addButton" id="addButton">Add</button>
+                                            <button class="btn btn-default" type="submit" value="deleteButton" id="deleteButton">Delete</button>
                                         </span>
                                     </div>
                                 </div>

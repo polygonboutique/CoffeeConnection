@@ -136,13 +136,21 @@ Template.gameContent.logic = function () {
 //global
 currentAction = "none";
 logic = false;
-harvestBeansAmount = 3; // sollte demnächst in der datenbank stehen, damit das mit perks aufwerten kann
+harvestBeansAmount = 3;
 actionArray = ["harvest", "plant", "delete"];
+baseBeanAmount = 3; // sollte demnächst in der datenbank stehen, damit das mit perks aufwerten kann
+connectionMultiplikator = 0;
+
+timer_Farmer_Field_Empty_to_Grown = 800 * 2;
+timer_Farmer_Field_Grown_to_Harvest = 1200 * 4;
+timer_Farmer_Field_Respawn_Time = 1200 * 3;
 
 stepGame = function(id){
     var userMail = AmplifiedSession.get("user").email;
     var user = Benutzer.find({"email" : userMail}).fetch();
     user = user[0];
+
+    harvestBeansAmount = baseBeanAmount + ( baseBeanAmount *  0.1 * user.connections.length );
 
     var gameObject = user.gameobject;
     var field = gameObject.fields[id];
@@ -159,6 +167,7 @@ stepGame = function(id){
     }else if(currentAction == "plant"){
         if(field.status == 0){
             field.status = 1;
+            field.life = 5; // lebenspunkte bzw. ernteanzahl der felder
 
             var addedField = $("#game_feld[fieldID='"+id+"']");
             addedField.removeClass();
@@ -217,9 +226,9 @@ stepGame = function(id){
                     }
 
                     Benutzer.update(user._id, {$set: { gameobject: gameObject } });
-                }, 800);
+                }, timer_Farmer_Field_Grown_to_Harvest);
 
-            }, 800);
+            }, timer_Farmer_Field_Empty_to_Grown);
         }
     }else if(currentAction == "delete"){
         field.status = 0;
@@ -274,10 +283,10 @@ harvestBeans = function(field, fieldID, gameObject){
     if(fieldBeansAmount < harvestBeansAmount){
         field.beans = 0;
         field.status = 0;
-        gameObject.coffee = gameObject.coffee + fieldBeansAmount;
+        gameObject.coffee = Math.round(gameObject.coffee + fieldBeansAmount);
     }else{
         field.beans = field.beans - harvestBeansAmount;
-        gameObject.coffee = gameObject.coffee + harvestBeansAmount;
+        gameObject.coffee = Math.round(gameObject.coffee + harvestBeansAmount);
     }
 
     /** feld nachwachsen lassen! **/
@@ -295,28 +304,49 @@ harvestBeans = function(field, fieldID, gameObject){
 
         /** change plant to be ready **/
         if(gameObject.type == 0){ // farmer
-            spawnTimer(function(){
-                /** get the recent gameobject from the db and modify it! **/
+
+            field.life =  field.life - 1;
+
+            if(field.life > 0){
+                spawnTimer(function(){
+                    /** get the recent gameobject from the db and modify it! **/
+                    var userMail = AmplifiedSession.get("user").email;
+                    var user = Benutzer.find({"email" : userMail}).fetch();
+                    user = user[0];
+
+                    var gameObject = user.gameobject;
+                    var field = gameObject.fields[fieldID];
+                    field.status = 3;
+
+                    /** anzahl der bohnen kann von sorte zu sorte variieren **/
+                    field.beans = 100;
+
+                    var addedField = $("#game_feld[fieldID='"+fieldID+"']");
+                    addedField.removeClass();
+
+                    addedField.addClass("game_feld_background");
+                    addedField.addClass("game_feld_harvest");
+
+
+                    Benutzer.update(user._id, {$set: { gameobject: gameObject } });
+                }, timer_Farmer_Field_Respawn_Time);
+            }else{
                 var userMail = AmplifiedSession.get("user").email;
                 var user = Benutzer.find({"email" : userMail}).fetch();
                 user = user[0];
 
                 var gameObject = user.gameobject;
                 var field = gameObject.fields[fieldID];
-                field.status = 3;
-
-                /** anzahl der bohnen kann von sorte zu sorte variieren **/
-                field.beans = 100;
+                field.status = 0;
 
                 var addedField = $("#game_feld[fieldID='"+fieldID+"']");
                 addedField.removeClass();
 
-                    addedField.addClass("game_feld_background");
-                    addedField.addClass("game_feld_harvest");
-
-
+                addedField.addClass("game_feld_background");
+                addedField.addClass("game_feld_empty");
                 Benutzer.update(user._id, {$set: { gameobject: gameObject } });
-            }, 5000);
+
+            }
         }
     }
 

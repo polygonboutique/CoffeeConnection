@@ -2,7 +2,7 @@
 * author: Sergej.
 **/
 Meteor.Router.add({
-    '/': 'home',
+    '/': 'onepage',
     '/login' : 'login',
     '/logout' : 'logout',
     '/register' : 'register',

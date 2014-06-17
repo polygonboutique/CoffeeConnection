@@ -68,7 +68,7 @@ Template.register.events({
                                 id : new Date().getTime().toString().substr(4), // this is a hack -> http://stackoverflow.com/questions/15886833/how-can-i-create-an-auto-increment-field-on-meteor
                                 name : username,
                                 email : email,
-                                password : password,
+                                password : hashAndSalt(password),
                                 connections : [], // add empty array
                                 gameobject : {
                                     type : userType,

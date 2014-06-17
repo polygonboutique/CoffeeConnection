@@ -21,7 +21,9 @@ Template.login.events({
 
         var login = new Login();
 
-        if((email.length + password.length) <= 0){
+        password = hashAndSalt(password);
+
+        if(email.length <= 0 || password.length <= 0){
             $('#login_error').html(login.errorDataIncomplete());
             $('#login_error').addClass('alert alert-danger');
         }else{

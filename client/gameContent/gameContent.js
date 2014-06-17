@@ -71,7 +71,6 @@ Template.gameContent.logic = function () {
                 $('#game_panel').append('<div id="harvest" class="game_panel_icon" onclick="changeCurrentAction('+"'harvest'"+')"><div class="harvest_icon"></div></div>');
                 $('#game_panel').append('<div id="plant" class="game_panel_icon" onclick="changeCurrentAction('+"'plant'"+')"><div class="plant_icon"></div></div>');
                 $('#game_panel').append('<div id="delete" class="game_panel_icon" onclick="changeCurrentAction('+"'delete'"+')"><div class="shovel_icon"></div></div>');
-                $('#game_panel').append('<div class="game_panel_icon" onclick="changeCurrentAction('+"'other'"+')">Other</div>');
 
             }else if(userType == 1){ // röster
                 for(var i = 0; i < gameObject.fields.length; i++){
@@ -112,7 +111,6 @@ Template.gameContent.logic = function () {
                 $('#game_panel').append('<div id="harvest" class="game_panel_icon" onclick="changeCurrentAction('+"'harvest'"+')"><div class="hand_icon"></div></div>');
                 $('#game_panel').append('<div id="plant" class="game_panel_icon" onclick="changeCurrentAction('+"'plant'"+')"><div class="build_icon"></div></div>');
                 $('#game_panel').append('<div id="delete" class="game_panel_icon" onclick="changeCurrentAction('+"'delete'"+')"><div class="wreck_icon"></div></div>');
-                $('#game_panel').append('<div class="game_panel_icon" onclick="changeCurrentAction('+"'other'"+')">Other</div>');
 
                 $('#tpl_gameContent').addClass('game_roeste_background');
             }

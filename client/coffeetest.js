@@ -12,5 +12,5 @@ Meteor.Router.add({
     '/userlist' : 'userlist',
     '/onepage' : 'onepage',
     '/gameContent' : 'gameContent',
-    '/fabitest' : 'fabitest'
+    '/coffeeconnection' : 'onepage'
 });
